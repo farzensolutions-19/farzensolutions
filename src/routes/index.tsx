@@ -347,7 +347,7 @@ function ContactForm() {
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const d = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
+    const d = Object.fromEntries(new FormData(e.currentTarget)) as { name: string; business: string; email: string; phone: string; type: string; budget: string; description: string };
     if (!d.name?.trim() || !d.email?.trim() || !d.phone?.trim() || !d.description?.trim()) return setError("Please fill in name, email, phone and project description.");
     if (!/^\S+@\S+\.\S+$/.test(d.email)) return setError("Please enter a valid email address.");
     if (!/^[+\d\s-]{8,15}$/.test(d.phone)) return setError("Please enter a valid phone number.");
