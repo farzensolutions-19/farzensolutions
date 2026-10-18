@@ -39,11 +39,11 @@ const services = [
 ];
 
 const tech = [
-  ["Frontend", "HTML5 · CSS3 · JavaScript · Tailwind CSS"],
-  ["Backend", "PHP · Laravel · REST APIs"],
-  ["CMS & E-commerce", "WordPress · WooCommerce"],
-  ["Database", "MySQL"],
-  ["Integrations", "Payments · APIs · ERP/CRM · Email · Messaging"],
+  { n: "01", k: "Frontend", d: "Interfaces & experiences", items: ["React.js", "Next.js", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"], hot: true },
+  { n: "02", k: "Backend", d: "Logic & server APIs", items: ["PHP", "Laravel", "REST APIs"] },
+  { n: "03", k: "CMS & E-commerce", d: "Content & online stores", items: ["WordPress", "WooCommerce"] },
+  { n: "04", k: "Database", d: "Data & records", items: ["MySQL"] },
+  { n: "05", k: "Integrations", d: "Connected systems", items: ["Payments", "APIs", "ERP / CRM", "Email", "Messaging"] },
 ];
 
 const steps = [
@@ -177,14 +177,54 @@ function Index() {
         </Section>
 
         <Section eyebrow="Technologies" title="Tools we work with" className="bg-secondary">
-          <div className="grid gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-2 lg:grid-cols-5">
-            {tech.map(([k, v]) => (
-              <div key={k} className="bg-card p-6">
-                <p className="eyebrow">{k}</p>
-                <p className="mt-3 text-sm">{v}</p>
-              </div>
+          <div className="overflow-hidden rounded-3xl border bg-card">
+            <div className="flex items-center justify-between gap-4 border-b bg-secondary px-6 py-3 md:px-10">
+              <p className="eyebrow">The stack · layer by layer</p>
+              <p className="hidden text-xs text-muted-foreground sm:block">Chosen per project</p>
+            </div>
+            {tech.map((t) => (
+              <article
+                key={t.k}
+                className={`group relative flex flex-col gap-5 border-b border-border px-6 py-8 last:border-b-0 md:flex-row md:items-center md:gap-10 md:px-10 ${
+                  t.hot ? "bg-ink text-ink-foreground" : "transition-colors hover:bg-secondary/60"
+                }`}
+              >
+                <span
+                  aria-hidden
+                  className={`absolute inset-y-0 left-0 w-1 origin-top transition-transform duration-500 ease-out group-hover:scale-y-100 ${
+                    t.hot ? "scale-y-100 bg-accent" : "scale-y-0 bg-primary"
+                  }`}
+                />
+                <div className="flex items-center gap-4 md:w-56 md:shrink-0 md:flex-col md:items-start md:gap-1.5">
+                  <span className="font-display text-4xl leading-none text-accent">{t.n}</span>
+                  <div>
+                    <h3 className="text-2xl">{t.k}</h3>
+                    <p className={`text-xs ${t.hot ? "opacity-70" : "text-muted-foreground"}`}>{t.d}</p>
+                  </div>
+                  {t.hot && (
+                    <span className="rounded-full bg-accent px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-accent-foreground">
+                      Primary focus
+                    </span>
+                  )}
+                </div>
+                <ul className="flex flex-wrap gap-2 md:flex-1">
+                  {t.items.map((x) => (
+                    <li
+                      key={x}
+                      className={`rounded-full border px-4 py-2 text-sm transition-transform duration-300 group-hover:-translate-y-0.5 ${
+                        t.hot ? "border-ink-foreground/25 bg-ink-foreground/10" : "border-border bg-secondary"
+                      }`}
+                    >
+                      {x}
+                    </li>
+                  ))}
+                </ul>
+              </article>
             ))}
           </div>
+          <p className="mt-6 max-w-2xl text-sm text-muted-foreground">
+            Modern frontends are built with React.js and Next.js for speed and scalability; backends, CMS and databases are chosen to suit each project.
+          </p>
         </Section>
 
         <Section eyebrow="Process" title="How we work">
