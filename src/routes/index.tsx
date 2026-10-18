@@ -213,7 +213,7 @@ function Index() {
                         </div>
                       ))}
                     </div>
-                    <ul className="relative mt-4 flex flex-wrap gap-2">
+                    <ul className="relative mt-6 flex flex-wrap gap-2 lg:mt-auto lg:pt-6">
                       {t.items.slice(2).map((x) => (
                         <li
                           key={x}
