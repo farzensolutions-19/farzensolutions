@@ -39,11 +39,11 @@ const services = [
 ];
 
 const tech = [
-  { n: "01", k: "Frontend", d: "Interfaces & experiences", items: ["React.js", "Next.js", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"], hot: true },
-  { n: "02", k: "Backend", d: "Logic & server APIs", items: ["PHP", "Laravel", "REST APIs"] },
-  { n: "03", k: "CMS & E-commerce", d: "Content & online stores", items: ["WordPress", "WooCommerce"] },
-  { n: "04", k: "Database", d: "Data & records", items: ["MySQL"] },
-  { n: "05", k: "Integrations", d: "Connected systems", items: ["Payments", "APIs", "ERP / CRM", "Email", "Messaging"] },
+  { n: "01", k: "Frontend", d: "Interfaces & experiences", items: ["React.js", "Next.js", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"], hot: true, wide: false },
+  { n: "02", k: "Backend", d: "Logic & server APIs", items: ["PHP", "Laravel", "REST APIs"], wide: false },
+  { n: "03", k: "CMS & E-commerce", d: "Content & online stores", items: ["WordPress", "WooCommerce"], wide: false },
+  { n: "04", k: "Database", d: "Data & records", items: ["MySQL"], wide: true },
+  { n: "05", k: "Integrations", d: "Connected systems", items: ["Payments", "APIs", "ERP / CRM", "Email", "Messaging"], wide: false },
 ];
 
 const steps = [
@@ -177,48 +177,68 @@ function Index() {
         </Section>
 
         <Section eyebrow="Technologies" title="Tools we work with" className="bg-secondary">
-          <div className="overflow-hidden rounded-3xl border bg-card">
-            <div className="flex items-center justify-between gap-4 border-b bg-secondary px-6 py-3 md:px-10">
-              <p className="eyebrow">The stack · layer by layer</p>
-              <p className="hidden text-xs text-muted-foreground sm:block">Chosen per project</p>
-            </div>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {tech.map((t) => (
               <article
                 key={t.k}
-                className={`group relative flex flex-col gap-5 border-b border-border px-6 py-8 last:border-b-0 md:flex-row md:items-center md:gap-10 md:px-10 ${
-                  t.hot ? "bg-ink text-ink-foreground" : "transition-colors hover:bg-secondary/60"
+                className={`group relative flex flex-col overflow-hidden rounded-3xl border p-8 transition duration-300 hover:-translate-y-1 ${
+                  t.hot
+                    ? "border-transparent bg-ink text-ink-foreground md:col-span-2 lg:row-span-2"
+                    : `bg-card ${t.wide ? "lg:col-span-2" : ""}`
                 }`}
               >
-                <span
-                  aria-hidden
-                  className={`absolute inset-y-0 left-0 w-1 origin-top transition-transform duration-500 ease-out group-hover:scale-y-100 ${
-                    t.hot ? "scale-y-100 bg-accent" : "scale-y-0 bg-primary"
-                  }`}
-                />
-                <div className="flex items-center gap-4 md:w-56 md:shrink-0 md:flex-col md:items-start md:gap-1.5">
-                  <span className="font-display text-4xl leading-none text-accent">{t.n}</span>
-                  <div>
-                    <h3 className="text-2xl">{t.k}</h3>
-                    <p className={`text-xs ${t.hot ? "opacity-70" : "text-muted-foreground"}`}>{t.d}</p>
-                  </div>
+                {t.hot && (
+                  <span aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-accent/20 blur-3xl" />
+                )}
+                <div className="relative flex items-start justify-between gap-3">
+                  <span className="font-display text-5xl leading-none text-accent">{t.n}</span>
                   {t.hot && (
-                    <span className="rounded-full bg-accent px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-accent-foreground">
+                    <span className="rounded-full bg-accent px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-accent-foreground">
                       Primary focus
                     </span>
                   )}
                 </div>
-                <ul className="flex flex-wrap gap-2 md:flex-1">
-                  {t.items.map((x) => (
-                    <li
-                      key={x}
-                      className={`rounded-full border px-4 py-2 text-sm transition-transform duration-300 group-hover:-translate-y-0.5 ${
-                        t.hot ? "border-ink-foreground/25 bg-ink-foreground/10" : "border-border bg-secondary"
-                      }`}
-                    >
-                      {x}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className={`relative mt-4 ${t.hot ? "text-4xl" : "text-2xl"}`}>{t.k}</h3>
+                <p className={`relative mt-1 text-xs ${t.hot ? "opacity-70" : "text-muted-foreground"}`}>{t.d}</p>
+                {t.hot ? (
+                  <>
+                    <div className="relative mt-6 grid gap-3 sm:grid-cols-2">
+                      {t.items.slice(0, 2).map((x) => (
+                        <div
+                          key={x}
+                          className="rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-5 transition-colors duration-300 group-hover:border-accent/50"
+                        >
+                          <span className="font-display text-2xl text-accent">{x}</span>
+                          <span className="mt-1 block text-[10px] uppercase tracking-widest opacity-60">Core framework</span>
+                        </div>
+                      ))}
+                    </div>
+                    <ul className="relative mt-6 flex flex-wrap gap-2 lg:mt-auto lg:pt-6">
+                      {t.items.slice(2).map((x) => (
+                        <li
+                          key={x}
+                          className="rounded-full border border-ink-foreground/25 bg-ink-foreground/10 px-4 py-2 text-sm transition-transform duration-300 group-hover:-translate-y-0.5"
+                        >
+                          {x}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <ul className="relative mt-5 flex flex-wrap gap-2">
+                    {t.items.map((x) => (
+                      <li key={x} className="rounded-full border border-border bg-secondary px-4 py-2 text-sm">
+                        {x}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <span
+                  aria-hidden
+                  className={`absolute inset-x-0 bottom-0 h-1 origin-left bg-accent transition-transform duration-500 ease-out ${
+                    t.hot ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </article>
             ))}
           </div>
