@@ -177,73 +177,44 @@ function Index() {
         </Section>
 
         <Section eyebrow="Technologies" title="Tools we work with" className="bg-secondary">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="overflow-hidden rounded-2xl border bg-card">
             {tech.map((t) => (
-              <article
+              <div
                 key={t.k}
-                className={`group relative flex flex-col overflow-hidden rounded-3xl border p-8 transition duration-300 hover:-translate-y-1 ${
-                  t.hot
-                    ? "border-transparent bg-ink text-ink-foreground md:col-span-2 lg:row-span-2"
-                    : `bg-card ${t.wide ? "lg:col-span-2" : ""}`
+                className={`group relative grid grid-cols-1 items-center gap-x-6 gap-y-1 px-5 py-3.5 transition-colors duration-300 sm:grid-cols-[230px_minmax(0,1fr)] sm:gap-y-0 ${
+                  t.hot ? "bg-ink text-ink-foreground" : "border-t hover:bg-secondary/70"
                 }`}
               >
-                {t.hot && (
-                  <span aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-accent/20 blur-3xl" />
-                )}
-                <div className="relative flex items-start justify-between gap-3">
-                  <span className="font-display text-5xl leading-none text-accent">{t.n}</span>
-                  {t.hot && (
-                    <span className="rounded-full bg-accent px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-accent-foreground">
-                      Primary focus
-                    </span>
-                  )}
+                <div className="flex items-baseline gap-2.5">
+                  <span className={`font-display text-xs tabular-nums ${t.hot ? "text-accent" : "text-muted-foreground"}`}>{t.n}</span>
+                  <span className="font-display text-lg leading-tight">{t.k}</span>
+                  <span className={`hidden text-[11px] lg:inline ${t.hot ? "opacity-50" : "text-muted-foreground"}`}>· {t.d}</span>
                 </div>
-                <h3 className={`relative mt-4 ${t.hot ? "text-4xl" : "text-2xl"}`}>{t.k}</h3>
-                <p className={`relative mt-1 text-xs ${t.hot ? "opacity-70" : "text-muted-foreground"}`}>{t.d}</p>
-                {t.hot ? (
-                  <>
-                    <div className="relative mt-6 grid gap-3 sm:grid-cols-2">
-                      {t.items.slice(0, 2).map((x) => (
-                        <div
-                          key={x}
-                          className="rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-5 transition-colors duration-300 group-hover:border-accent/50"
-                        >
-                          <span className="font-display text-2xl text-accent">{x}</span>
-                          <span className="mt-1 block text-[10px] uppercase tracking-widest opacity-60">Core framework</span>
-                        </div>
-                      ))}
-                    </div>
-                    <ul className="relative mt-6 flex flex-wrap gap-2 lg:mt-auto lg:pt-6">
-                      {t.items.slice(2).map((x) => (
-                        <li
-                          key={x}
-                          className="rounded-full border border-ink-foreground/25 bg-ink-foreground/10 px-4 py-2 text-sm transition-transform duration-300 group-hover:-translate-y-0.5"
-                        >
-                          {x}
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <ul className="relative mt-5 flex flex-wrap gap-2">
-                    {t.items.map((x) => (
-                      <li key={x} className="rounded-full border border-border bg-secondary px-4 py-2 text-sm">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {t.items.map((x) => {
+                    const core = t.hot && (x === "React.js" || x === "Next.js");
+                    return (
+                      <span
+                        key={x}
+                        className={
+                          core
+                            ? "rounded-md bg-accent px-2.5 py-1 text-xs font-semibold text-accent-foreground"
+                            : t.hot
+                              ? "rounded-md border border-ink-foreground/25 px-2.5 py-1 text-xs opacity-80"
+                              : "rounded-md border border-border bg-secondary px-2.5 py-1 text-xs text-muted-foreground transition-colors duration-300 group-hover:border-accent/60 group-hover:text-foreground"
+                        }
+                      >
                         {x}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                <span
-                  aria-hidden
-                  className={`absolute inset-x-0 bottom-0 h-1 origin-left bg-accent transition-transform duration-500 ease-out ${
-                    t.hot ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                  }`}
-                />
-              </article>
+                      </span>
+                    );
+                  })}
+                  {t.hot && <span className="ml-auto hidden text-[10px] uppercase tracking-widest opacity-55 lg:inline">Primary focus</span>}
+                </div>
+              </div>
             ))}
           </div>
-          <p className="mt-6 max-w-2xl text-sm text-muted-foreground">
-            Modern frontends are built with React.js and Next.js for speed and scalability; backends, CMS and databases are chosen to suit each project.
+          <p className="mt-4 max-w-2xl text-xs text-muted-foreground">
+            Frontends are built with React.js and Next.js for speed and scalability; backend, CMS and database choices follow each project.
           </p>
         </Section>
 
