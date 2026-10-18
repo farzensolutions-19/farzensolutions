@@ -177,19 +177,18 @@ function Index() {
         </Section>
 
         <Section eyebrow="Technologies" title="Tools we work with" className="bg-secondary">
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2">
             {tech.map((t) => (
-              <article key={t.k} className={`rounded-2xl border p-6 transition hover:-translate-y-1 ${t.hot ? "border-transparent bg-ink text-ink-foreground lg:col-span-2" : "bg-card"}`}>
+              <article key={t.k} className={`flex flex-col rounded-2xl border p-6 transition hover:-translate-y-1 ${t.hot ? "border-transparent bg-ink text-ink-foreground md:col-span-2" : "bg-card hover:border-accent/50"}`}>
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-2xl leading-tight">{t.k}</h3>
-                  {t.hot ? (
-                    <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">Primary focus</span>
-                  ) : (
-                    <span className="font-display text-xs tabular-nums text-muted-foreground">{t.n}</span>
-                  )}
+                  <h3 className="text-2xl leading-tight">
+                    <span className="mr-3 font-display text-sm tabular-nums text-accent">{t.n}</span>
+                    {t.k}
+                  </h3>
+                  {t.hot && <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">Primary focus</span>}
                 </div>
                 <p className={`mt-2 text-sm ${t.hot ? "opacity-70" : "text-muted-foreground"}`}>{t.d}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="mt-auto flex flex-wrap gap-2 pt-5">
                   {t.items.map((x) => {
                     const core = t.hot && (x === "React.js" || x === "Next.js");
                     return (
