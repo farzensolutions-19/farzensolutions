@@ -181,14 +181,13 @@ function Index() {
             {tech.map((t) => (
               <div
                 key={t.k}
-                className={`group relative grid grid-cols-1 items-center gap-x-6 gap-y-1 px-5 py-3.5 transition-colors duration-300 sm:grid-cols-[230px_minmax(0,1fr)] sm:gap-y-0 ${
+                className={`group relative grid grid-cols-1 items-center gap-x-5 gap-y-1.5 px-5 py-3 transition-colors duration-300 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-y-0 lg:grid-cols-[200px_minmax(0,1fr)_auto] ${
                   t.hot ? "bg-ink text-ink-foreground" : "border-t hover:bg-secondary/70"
                 }`}
               >
-                <div className="flex items-baseline gap-2.5">
-                  <span className={`font-display text-xs tabular-nums ${t.hot ? "text-accent" : "text-muted-foreground"}`}>{t.n}</span>
-                  <span className="font-display text-lg leading-tight">{t.k}</span>
-                  <span className={`hidden text-[11px] lg:inline ${t.hot ? "opacity-50" : "text-muted-foreground"}`}>· {t.d}</span>
+                <div className="flex items-baseline gap-2 whitespace-nowrap">
+                  <span className={`font-display text-[11px] tabular-nums ${t.hot ? "text-accent" : "text-muted-foreground"}`}>{t.n}</span>
+                  <span className="font-display text-base leading-tight">{t.k}</span>
                 </div>
                 <div className="flex flex-wrap items-center gap-1.5">
                   {t.items.map((x) => {
@@ -198,18 +197,22 @@ function Index() {
                         key={x}
                         className={
                           core
-                            ? "rounded-md bg-accent px-2.5 py-1 text-xs font-semibold text-accent-foreground"
+                            ? "rounded-md bg-accent px-2 py-0.5 text-xs font-semibold text-accent-foreground"
                             : t.hot
-                              ? "rounded-md border border-ink-foreground/25 px-2.5 py-1 text-xs opacity-80"
-                              : "rounded-md border border-border bg-secondary px-2.5 py-1 text-xs text-muted-foreground transition-colors duration-300 group-hover:border-accent/60 group-hover:text-foreground"
+                              ? "rounded-md border border-ink-foreground/25 px-2 py-0.5 text-xs opacity-80"
+                              : "rounded-md border border-border bg-secondary px-2 py-0.5 text-xs text-muted-foreground transition-colors duration-300 group-hover:border-accent/60 group-hover:text-foreground"
                         }
                       >
                         {x}
                       </span>
                     );
                   })}
-                  {t.hot && <span className="ml-auto hidden text-[10px] uppercase tracking-widest opacity-55 lg:inline">Primary focus</span>}
                 </div>
+                {t.hot ? (
+                  <span className="hidden whitespace-nowrap text-[10px] uppercase tracking-widest opacity-60 lg:block lg:pl-6">Primary focus</span>
+                ) : (
+                  <span className="hidden whitespace-nowrap text-[11px] text-muted-foreground lg:block lg:pl-6">{t.d}</span>
+                )}
               </div>
             ))}
           </div>
