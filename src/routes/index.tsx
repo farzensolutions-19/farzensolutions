@@ -125,9 +125,8 @@ function Index() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <a href="#top" className="flex items-center gap-2.5">
             <img src={farzenMark.url} alt="Farzen Solutions logo" className="h-9 w-9 shrink-0 md:h-10 md:w-10" />
-            <span className="flex flex-col leading-none">
-              <span className="font-display text-[1.7rem] tracking-tight">Farzen<span className="text-accent">.</span></span>
-              <span className="mt-1 text-[0.55rem] font-bold uppercase tracking-[0.42em] text-muted-foreground">Solutions</span>
+            <span className="font-display text-[1.3rem] tracking-tight sm:text-2xl">
+              Farzen <span className="text-accent">Solutions</span><span className="text-accent">.</span>
             </span>
           </a>
           <nav className="hidden gap-8 text-sm md:flex">
@@ -141,17 +140,12 @@ function Index() {
         {/* Hero */}
         <section className="px-6 pb-24 pt-20 md:pt-32">
           <div className="mx-auto max-w-6xl animate-rise">
-            <div className="flex flex-wrap items-center gap-4 md:gap-5">
-              <img src={farzenMark.url} alt="Farzen Solutions logo" className="h-12 w-12 shrink-0 md:h-14 md:w-14" />
-              <div className="leading-none">
-                <p className="font-display text-4xl tracking-tight md:text-6xl">
-                  Farzen <em className="text-accent">Solutions</em><span className="text-accent">.</span>
-                </p>
-                <p className="mt-2 text-[0.6rem] font-bold uppercase tracking-[0.45em] text-muted-foreground md:text-[0.7rem]">Web Development · Coimbatore<span className="hidden sm:inline">, India</span></p>
-              </div>
-            </div>
+            <p className="font-display text-4xl tracking-tight md:text-6xl">
+              Farzen <span className="text-accent">Solutions</span><span className="text-accent">.</span>
+            </p>
+            <p className="mt-3 text-[0.65rem] font-bold uppercase tracking-[0.35em] text-muted-foreground md:text-xs">Web Development · Coimbatore, India</p>
             <h1 className="mt-8 max-w-5xl text-5xl leading-[1.02] md:text-8xl">
-              Professional Websites. <em className="text-primary">Powerful</em> Digital Solutions.
+              Professional Websites. <span className="text-primary">Powerful</span> Digital Solutions.
             </h1>
             <p className="mt-8 max-w-2xl text-lg text-muted-foreground">
               Farzen Solutions helps businesses establish a strong online presence through modern websites, e-commerce platforms, and custom web applications built around their business needs.
@@ -369,9 +363,8 @@ function Index() {
           <div className="max-w-sm">
             <a href="#top" className="inline-flex items-center gap-3">
               <img src={farzenMark.url} alt="Farzen Solutions logo" className="h-10 w-10 shrink-0" />
-              <span className="flex flex-col leading-none">
-                <span className="font-display text-3xl tracking-tight">Farzen<span className="text-accent">.</span></span>
-                <span className="mt-1 text-[0.6rem] font-bold uppercase tracking-[0.42em] text-muted-foreground">Solutions</span>
+              <span className="font-display text-[1.6rem] tracking-tight sm:text-3xl">
+                Farzen <span className="text-accent">Solutions</span><span className="text-accent">.</span>
               </span>
             </a>
             <p className="mt-2 text-sm text-muted-foreground">Web Development & Software Solutions. Professional business websites, e-commerce platforms, and custom web applications.</p>
