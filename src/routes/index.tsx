@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
+import farzenMark from "@/assets/farzen-mark.png.asset.json";
 
 const TITLE = "Farzen Solutions — Websites & Web Apps in Coimbatore";
 const DESC =
@@ -122,7 +123,10 @@ function Index() {
     <div className="min-h-screen">
       <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <a href="#top" className="font-display text-2xl">Farzen<span className="text-accent">.</span></a>
+          <a href="#top" className="flex items-center gap-2.5">
+            <img src={farzenMark.url} alt="Farzen Solutions logo" className="h-9 w-9 shrink-0 md:h-10 md:w-10" />
+            <span className="font-display text-2xl">Farzen<span className="text-accent">.</span></span>
+          </a>
           <nav className="hidden gap-8 text-sm md:flex">
             {nav.map(([l, h]) => <a key={h} href={h} className="text-muted-foreground hover:text-foreground">{l}</a>)}
           </nav>
