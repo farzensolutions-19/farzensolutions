@@ -125,8 +125,9 @@ function Index() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <a href="#top" className="flex items-center gap-2.5">
             <img src={farzenMark.url} alt="Farzen Solutions logo" className="h-9 w-9 shrink-0 md:h-10 md:w-10" />
-            <span className="font-display text-[1.3rem] tracking-tight sm:text-2xl">
-              Farzen <span className="text-accent">Solutions</span><span className="text-accent">.</span>
+            <span className="flex flex-col font-display text-lg leading-[1.08] tracking-tight sm:text-xl">
+              <span>Farzen</span>
+              <span className="text-accent">Solutions.</span>
             </span>
           </a>
           <nav className="hidden gap-8 text-sm md:flex">
