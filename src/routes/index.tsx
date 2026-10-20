@@ -147,7 +147,7 @@ function Index() {
                 <p className="font-display text-4xl tracking-tight md:text-6xl">
                   Farzen <em className="text-accent">Solutions</em><span className="text-accent">.</span>
                 </p>
-                <p className="mt-2 text-[0.6rem] font-bold uppercase tracking-[0.45em] text-muted-foreground md:text-[0.7rem]">Web Development · Coimbatore, India</p>
+                <p className="mt-2 text-[0.6rem] font-bold uppercase tracking-[0.45em] text-muted-foreground md:text-[0.7rem]">Web Development · Coimbatore<span className="hidden sm:inline">, India</span></p>
               </div>
             </div>
             <h1 className="mt-8 max-w-5xl text-5xl leading-[1.02] md:text-8xl">
